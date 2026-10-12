@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -12,9 +11,39 @@
     <title>ONG Mãos que Transformam</title>
 
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .skip-link {
+            position: fixed;
+            top: 0.5rem;
+            left: 0.5rem;
+            z-index: 1000;
+            padding: 0.75rem 1rem;
+            background: #fff;
+            color: #123D2F;
+            font-weight: bold;
+            transform: translateY(-200%);
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
+        :focus-visible {
+            outline: 3px solid #123D2F;
+            outline-offset: 3px;
+        }
+
+        footer :focus-visible {
+            outline-color: #fff;
+        }
+    </style>
 </head>
 
 <body>
+    <a href="#conteudo" class="skip-link">
+        Pular para o conteúdo
+    </a>
 
     <header>
         <a href="#inicio" class="logo"
@@ -22,25 +51,24 @@
             Mãos que Transformam
         </a>
 
-        <button class="menu-toggle"
+        <button type="button" class="menu-toggle"
             aria-label="Abrir menu"
             aria-expanded="false"
             aria-controls="menu-principal">
-            ☰
+            <span aria-hidden="true">☰</span>
         </button>
 
         <nav id="menu-principal" aria-label="Navegação principal">
-
             <a href="#inicio">Início</a>
 
             <div class="dropdown">
-                <button class="dropdown-toggle"
+                <button type="button" class="dropdown-toggle"
                     aria-expanded="false"
-                    aria-haspopup="true">
+                    aria-controls="submenu-sobre">
                     Sobre nós
                 </button>
 
-                <div class="dropdown-menu">
+                <div id="submenu-sobre" class="dropdown-menu">
                     <a href="#missao">Nossa missão</a>
                     <a href="#projetos">Projetos</a>
                     <a href="#voluntariado">Voluntariado</a>
@@ -49,21 +77,35 @@
 
             <a href="#contato">Contato</a>
             <a href="#cadastro">Cadastre-se</a>
-
         </nav>
     </header>
 
-    <main id="conteudo" aria-live="polite">
+    <main id="conteudo" tabindex="-1">
         <!-- O JavaScript colocará o conteúdo aqui. -->
     </main>
 
     <footer>
-        <p>&copy; 2026 ONG Mãos que Transformam.
-            Todos os direitos reservados.</p>
+        <p>
+            &copy; 2026 ONG Mãos que Transformam.
+            Todos os direitos reservados.
+        </p>
     </footer>
 
     <script src="js/script.js" defer></script>
     <script type="module" src="js/main.js"></script>
 
+    <script>
+        document.querySelector(".skip-link").addEventListener(
+            "click",
+            function (event) {
+                event.preventDefault();
+
+                const conteudo = document.getElementById("conteudo");
+                conteudo.focus();
+                conteudo.scrollIntoView();
+            }
+        );
+    </script>
 </body>
-</html>|
+
+</html>
