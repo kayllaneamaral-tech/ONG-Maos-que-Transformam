@@ -941,4 +941,180 @@ footer p {
     background-color: #FDECEC;
     color: #A12626;
     border-left-color: #D64545;
+}/* Ajustes de contraste e acessibilidade */
+header,
+.destaque {
+    background: linear-gradient(135deg, #12553D, #176B4D);
+}
+
+nav > a:hover,
+.dropdown-toggle:hover,
+.menu-toggle:hover {
+    background-color: #12553D;
+}
+
+main a:not(.cards article a):not(.destaque a):not(#voluntariado a) {
+    color: #176B4D;
+    text-decoration: underline;
+}
+
+input,
+select,
+textarea {
+    color: #333333;
+    background-color: #FFFFFF;
+    border-color: #767676;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #767676;
+    opacity: 1;
+}
+
+[aria-invalid="true"] {
+    border: 2px solid #B00020;
+}
+
+:focus-visible {
+    outline: 3px solid #123D2F !important;
+    outline-offset: 3px;
+}
+
+header :focus-visible,
+.destaque :focus-visible,
+footer :focus-visible {
+    outline-color: #FFFFFF !important;
+}
+
+.contraste-toggle {
+    padding: 0.6rem 1rem;
+    border: 2px solid #FFFFFF;
+    border-radius: 8px;
+    background: #12553D;
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Modo de alto contraste */
+body.alto-contraste {
+    --cor-fundo: #000000;
+    --cor-superficie: #000000;
+    --cor-superficie-verde: #000000;
+    --cor-texto: #FFFFFF;
+    --cor-texto-secundario: #FFFFFF;
+    --cor-primaria: #FFFF00;
+    --cor-primaria-escura: #FFFF00;
+    --cor-borda: #FFFFFF;
+    --cor-rodape: #000000;
+
+    background: #000000;
+    color: #FFFFFF;
+}
+
+body.alto-contraste header,
+body.alto-contraste footer,
+body.alto-contraste section,
+body.alto-contraste form,
+body.alto-contraste .cards article,
+body.alto-contraste .dropdown-menu,
+body.alto-contraste .alerta {
+    background: #000000 !important;
+    color: #FFFFFF !important;
+    box-shadow: none;
+    border: 1px solid #FFFFFF;
+}
+
+body.alto-contraste h1,
+body.alto-contraste h2,
+body.alto-contraste h3,
+body.alto-contraste p,
+body.alto-contraste label,
+body.alto-contraste legend,
+body.alto-contraste strong,
+body.alto-contraste #mensagem-formulario {
+    color: #FFFFFF !important;
+}
+
+body.alto-contraste a,
+body.alto-contraste button,
+body.alto-contraste .badge {
+    background: #000000 !important;
+    color: #FFFF00 !important;
+}
+
+body.alto-contraste a {
+    text-decoration: underline !important;
+}
+
+body.alto-contraste button,
+body.alto-contraste .badge,
+body.alto-contraste .cards article a,
+body.alto-contraste .destaque a,
+body.alto-contraste #voluntariado a {
+    border: 2px solid #FFFF00;
+}
+
+body.alto-contraste input,
+body.alto-contraste select,
+body.alto-contraste textarea {
+    background: #000000;
+    color: #FFFFFF;
+    border: 2px solid #FFFFFF;
+}
+
+body.alto-contraste input::placeholder,
+body.alto-contraste textarea::placeholder {
+    color: #FFFFFF;
+}
+
+body.alto-contraste [aria-invalid="true"] {
+    border: 3px dashed #FFFF00;
+}
+
+body.alto-contraste :focus-visible {
+    outline-color: #FFFF00 !important;
+}
+
+/* Evita transbordamento em telas pequenas */
+.logo {
+    white-space: normal;
+}
+
+main > *,
+.cards article,
+.destaque-texto {
+    min-width: 0;
+}
+
+#contato a {
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 768px) {
+    .destaque {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .destaque img,
+    .missao img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+        animation: none !important;
+    }
 }
